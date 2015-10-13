@@ -18,6 +18,7 @@ typedef union{
   unsigned char byte;     // to show the programm: this is a bunch of bits.
 }reg_byte;
 
+
 void RegValues(reg_byte *ptr){
 
   printf("Binaere\t\tInteger\t\tHex\n");
@@ -26,7 +27,6 @@ void RegValues(reg_byte *ptr){
 	 ptr->bit.b3, ptr->bit.b2, ptr->bit.b1, ptr->bit.b0);
 
   printf("%d\t\t0x%x\n\n", ptr->byte, ptr->byte);
-
 }
 /*
 int ChangeValue(struct byte b){
@@ -49,15 +49,32 @@ int main (void){
 
   // struct byte byte2;
   //ChangeValue(bit);
-  bit.byte = 0x12;
+  bit.byte = 0x22;
+  //bit.bit.b1 = 1;
+  //bit.bit.b5 = 1;
   RegValues(&bit);
 
   bit.byte = ~bit.byte;
   RegValues(&bit);
   
-  bit.byte = bit.byte << 1;
+  bit.byte = 0x01;
   RegValues(&bit);
 
+  bit.byte = bit.byte << 3;
+  RegValues(&bit);
+
+  bit.byte = bit.byte ^ 0x00;
+  RegValues(&bit);
+
+  bit.byte = bit.byte & 0xff;
+  RegValues(&bit);
+
+  if (bit.bit.b1 == 1){
+    printf("Signal ein!\n");
+  }else{
+    printf("Signal aus!\n");
+  }
+  
   return 0;
   
 }
