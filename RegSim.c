@@ -1,4 +1,4 @@
-#Include <stdio.h>
+#include <stdio.h>
 #include <stdio.h>
 
 /*******************************/
@@ -65,7 +65,7 @@ int main (void){
   /*     plus Ausgabe       */
   /**************************/     
 
-  Bit.byte = ~bit.byte;
+  bit.byte = ~bit.byte;
   RegValues(&bit);
 
   /*********************************/
