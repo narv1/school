@@ -1,23 +1,27 @@
-#include <stdio.h>
+#Include <stdio.h>
 #include <stdio.h>
 
-/***************************/
-/* register initialisieren */
-/***************************/
+/*******************************/
+/* initialisiert ein 'Register */
+/*******************************/
 
 struct byte{
   unsigned char b0:1, b1:1, b2:1, b3:1, b4:1, b5:1, b6:1, b7:1;
 };
 
-/**********************/
-/* register summarize */
-/**********************/ 
+/************************************/
+/* legt eine Union ueber den struct */
+/************************************/ 
 
 typedef union{
   struct byte bit;
   unsigned char byte;     // to show the programm: this is a bunch of bits.
 }reg_byte;
 
+/*******************************/
+/*  eine Funktion welche die   */
+/*     die Ausgabe regelt      */
+/*******************************/
 
 void RegValues(reg_byte *ptr){
 
@@ -27,36 +31,81 @@ void RegValues(reg_byte *ptr){
   printf("%d\t\t0x%x\n\n", ptr->byte, ptr->byte);
 }
 
+/***********************/
+/*    HAUPTPROGRAMM    */
+/***********************/
+
 int main (void){
 
+  /********************************************************************/
+  /*          der neue Typ wird im Hauptprogramm aufgerufen           */
+  /* ein beliebiger char wird dann einer speicher adrresses zugewiesen*/
+  /********************************************************************/
+  
   reg_byte bit;
   bit.byte = 0x00;
-   
-  printf("Willkommen.\nDieses Programm Simuliert ein Register, indem man jedes einzelne bit ansprechen kann!\n\n");
+
+  /***********************************/
+  /* Begrueszung/Programm erklaerung */
+  /***********************************/
+  printf("Author: Stefan Hermeter\n\n");
+  printf("Willkommen.\nDieses Programm Simuliert ein Register!\nWo es moeglich ist jedes einzelne Bit anzusprechen.\n\n");
   RegValues(&bit);
 
-  // struct byte byte2;
-  //ChangeValue(bit);
-  bit.byte = 0x22;        //     <--  1.Moeglichkeit
-  //bit.bit.b1 = 1;              <--  2.Moeglichkeit                   Es gibt 2 Moeglichkeiten einzelne Bits anzusprechen entweder man spricht das selbst erstellt Byte an od. 
-  //Bit.bit.b5 = 1;                                                    man spricht die bits einzeln an. Sow wie links vom diesen Text dargestellt.
+  /*****************************************************/
+  /*         bit1 und bit 5 auf eins gesetzt           */
+  /* Ausgabe der Bitwerte ueber die Funktion RegValues */
+  /*****************************************************/
+
+  bit.byte = 0x22;        
   RegValues(&bit);
 
-  bit.byte = ~bit.byte;
+  /**************************/
+  /* Einerkomplement bilden */
+  /*     plus Ausgabe       */
+  /**************************/     
+
+  Bit.byte = ~bit.byte;
   RegValues(&bit);
+
+  /*********************************/
+  /* Alle ausser bit0 auf 0 setzen */
+  /*         plus Ausgabe          */                       
+  /*********************************/     
   
   bit.byte = 0x01;
   RegValues(&bit);
 
+  /***********************************/
+  /* verschieben der Bits nach links */
+  /*          plus Ausgabe           */
+  /***********************************/        
+  
   bit.byte = bit.byte << 3;
   RegValues(&bit);
 
+  /**************************************/
+  /* Das Byte mit einem XOR verknuepfen */
+  /*            Plus Ausgabe            */
+  /**************************************/ 
+  
   bit.byte = bit.byte ^ 0x00;
   RegValues(&bit);
 
+  /**************************************/
+  /* Das Byte mit einem UND verknuepfen */
+  /*            Plus Ausgabe            */
+  /**************************************/               
+  
   bit.byte = bit.byte & 0xff;
   RegValues(&bit);
 
+
+  /*********************************/
+  /* Wenn bit1 auf 1 steht Ausgabe */
+  /* Wenn bit1 auf 0 steht Ausgabe */
+  /*********************************/
+  
   if (bit.bit.b1 == 1){
     printf("Signal ein!\n");
   }else{
