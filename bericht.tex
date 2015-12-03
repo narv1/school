@@ -1,0 +1,71 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage[ngerman]{babel}
+\usepackage{epstopdf}
+\usepackage{titlesec}
+\renewcommand{\arraystretch}{1.3}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\newcommand*{\tline}{%
+  \ifmeasuring@
+  % first measuring run
+  \else
+  % second run
+  % \typeout{\meaning\maxcolumn@widths}% debug info
+  \ifodd\column@
+  \expandafter\rlap
+  \else
+  \expandafter\llap
+  \fi
+     {%
+       \vrule height-1ex depth \dimexpr1ex+.4pt\relax width
+       \ifcase\numexpr\column@+1\expandafter\relax
+       \maxcolumn@widths
+       \fi
+     }%
+     \fi
+}
+\makeatother
+\restylefloat{table}
+\newcommand{\mytitle}{Übung 4}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  pdftitle=\mytitle,
+  pdfauthor={Fabian Nedoluha, Stefan Hermeter},
+}
+\begin{document}
+\title{\mytitle:}
+\subtitle{Titel der Übung}
+\date{\today}
+\author{Stefan Hermeter \texttt{\href{mailto:stefan.hermeter@gmx.at}{stefan.hermeter@gmx.at}}\\
+  Klasse: 5ABETi\\
+  Schuljahr: 2015/16, 5. Semester}
+\pagenumbering{gobble}
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+\pagenumbering{arabic}
+\part{foo}
+\section{bar}
+\subsection{baz}
+\subsubsection{bax}
+\paragraph{foobar}
+\subparagraph{phatang}
+\end{document}
