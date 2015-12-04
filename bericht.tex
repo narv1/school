@@ -40,7 +40,7 @@
 }
 \makeatother
 \restylefloat{table}
-\newcommand{\mytitle}{Übung 4}
+\newcommand{\mytitle}{Übung 1}
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
@@ -48,24 +48,65 @@
   pdfauthor={Fabian Nedoluha, Stefan Hermeter},
 }
 \begin{document}
-\title{\mytitle:}
-\subtitle{Titel der Übung}
+\title{\mytitle:RegSim.c}
+\subtitle{Bitverarbeitung}
 \date{\today}
 \author{Stefan Hermeter \texttt{\href{mailto:stefan.hermeter@gmx.at}{stefan.hermeter@gmx.at}}\\
   Klasse: 5ABETi\\
-  Schuljahr: 2015/16, 5. Semester}
+  Schuljahr: 2015/16, 28. November}
 \pagenumbering{gobble}
 \maketitle
 \pagenumbering{roman}
+\newpage
 \tableofcontents
 \listoffigures
 \listoftables
 \newpage
 \pagenumbering{arabic}
-\part{foo}
-\section{bar}
-\subsection{baz}
-\subsubsection{bax}
-\paragraph{foobar}
-\subparagraph{phatang}
+\section{Aufgabenstellung}
+Erstellen Sie ein Programm RegSim, welches ein Register simuliert bei dem die einzelnen Bits angesprochen werden können.\\
+Das Programm sollte diese Aufgaben erfüllen:
+
+%% Aufzählung der Anforderungen
+\begin{itemize}
+\item Register mit  \verb|\|x00 initialisieren
+\item Bit 1 und Bit 5 auf 1 setzen
+\item Einerkomplement bilden (reg = ~reg)
+\item Bit 0 auf 1 setzen, alle anderen 0
+\item alle Bits um 3 Stellen nach rechts (im Little - Endian - Sinne) verschieben
+\item Register mit \verb|\|x00 XOR - verknüpfen
+\item Register mit  \verb|\|\ xFF UND - verknüpfen
+\end{itemize}
+  
+\subsection{Ausgabe}
+Geben Sie nach jeder Aufgabenstellung den Wert des Registers als:
+
+%% Aufzählung der Ausgabe
+\begin{itemize}
+\item[1)] Binär
+\item[2)] Integerwert
+\item[3)] Hexadecimal
+\end {itemize}
+
+\section{Programmablaufplan}
+\section{Resourcen}
+
+\subsection{Sourcecode-Files}
+\begin{itemize}
+\item RegSim.c
+  \end{itemize}
+\subsection{Verwendete Libraries}
+\begin{itemize}
+\item stdio.h
+\end{itemize}
+\section{Testergebnisse}
+\subsection{Ausgabe}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{images/ausgabe.png}
+  \caption{Ausgabe}
+  \label{fig:digraph}
+\end{figure} 
+
+
 \end{document}

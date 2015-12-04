@@ -1,10 +1,29 @@
-#include <stdio.h>
+/*******************************************************************************************/
+/*                           Willkommen zum ersten Projekt!                                */
+/*               Dieses Programm zielt darauf ab einen besseren Umgang mit:                */
+/*                          Übungen mit Vektoren und Matrizen                              */
+/*                                     -Arrays                                             */
+/*                    -Verbesserung der Eingabe der Stringzerlegung                        */
+/*                   -Berechnung einfacher mathematischer Sachverhalte                     */
+/*******************************************************************************************/
+
+
+/*******************************************************************************************/
+/*                               Author: Stefan Hermeter                                   */
+/*                                  Klasse:5/6 ABETI                                       */
+/*                                 Datum:  14.11.2015                                      */
+/*******************************************************************************************/
+
+
+/*****************************************/
+/*      Die verwendeten Libaries         */
+/* bzw. die maximale Anzahl der Vektoren */
+/*****************************************/
 #include <stdio.h>
 
 /*******************************/
 /* initialisiert ein 'Register */
 /*******************************/
-
 struct byte{
   unsigned char b0:1, b1:1, b2:1, b3:1, b4:1, b5:1, b6:1, b7:1;
 };
@@ -12,7 +31,6 @@ struct byte{
 /************************************/
 /* legt eine Union ueber den struct */
 /************************************/ 
-
 typedef union{
   struct byte bit;
   unsigned char byte;     // to show the programm: this is a bunch of bits.
@@ -22,9 +40,8 @@ typedef union{
 /*  eine Funktion welche die   */
 /*     die Ausgabe regelt      */
 /*******************************/
-
 void RegValues(reg_byte *ptr){
-
+  printf("__________________________________________________\n");
   printf("Binaere\t\tInteger\t\tHex\n");
   printf("%d%d%d%d%d%d%d%d\t", ptr->bit.b7,  ptr->bit.b6, ptr->bit.b5, ptr->bit.b4,
 	 ptr->bit.b3, ptr->bit.b2, ptr->bit.b1, ptr->bit.b0);
@@ -34,7 +51,6 @@ void RegValues(reg_byte *ptr){
 /***********************/
 /*    HAUPTPROGRAMM    */
 /***********************/
-
 int main (void){
 
   /********************************************************************/
@@ -48,7 +64,7 @@ int main (void){
   /***********************************/
   /* Begrueszung/Programm erklaerung */
   /***********************************/
-  printf("Author: Stefan Hermeter\n\n");
+  printf("Author:\tStefan Hermeter\nKlasse:\t5/6 ABETI\n\n");
   printf("Willkommen.\nDieses Programm Simuliert ein Register!\nWo es moeglich ist jedes einzelne Bit anzusprechen.\n\n");
   RegValues(&bit);
 
@@ -105,7 +121,7 @@ int main (void){
   /* Wenn bit1 auf 1 steht Ausgabe */
   /* Wenn bit1 auf 0 steht Ausgabe */
   /*********************************/
-  
+  printf("__________________________________________________\n"); 
   if (bit.bit.b1 == 1){
     printf("Signal ein!\n");
   }else{
