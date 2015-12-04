@@ -1,12 +1,13 @@
 PDF =   bericht.pdf
 SRC =   bericht.tex
+EPS =	Flussdiagramm.eps
 
 all: $(PDF)
 
 $(PDF): $(SRC) $(EPS)
 	rubber -d $(SRC)
 
-%.eps: images/%.png
+%.eps: images/%.dia
 	dia-normal -e $@ -t eps $<
 
 clean:
